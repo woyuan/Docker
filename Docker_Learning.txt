@@ -1,0 +1,13 @@
+核心是利用LXC（linuxContainer轻量虚拟化）来实现类似VM的功能。
+
+而 LXC所实现的隔离性主要是来自内核的命名空间, 其中pid、net、ipc、mnt、uts 等命名空间将容器的进程、网络、消息、文件系统和hostname 隔离开。
+
+这有点类似于chroot，chroot是将应用隔离到一个虚拟的私有root下，而LXC在这之上更进了一步。LXC内部依赖Linux内核的3种隔离机制（isolation infrastructure）：
+ChrootCgroupsNamespaces
+
+int child_pid = clone(child_main,child_stack + stack_size , sigchld,null);
+这里使用的是clone而不是fork，这是关键
+
+
+在计算机科学中，Shell俗称壳（用来区别于核），是指“提供使用者使用界面”的软件（命令解析器）。它类似于DOS下的command和后来的cmd.exe。它接收用户命令，然后调用相应的应用程序。
+bash 是一个为GNU计划编写的Unix shell。
